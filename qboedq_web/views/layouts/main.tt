@@ -12,28 +12,21 @@
     !window.jQuery && document.write('<script type="text/javascript" src="<% request.uri_base %>/javascripts/jquery.js"><\/script>')
 /* ]]> */</script>
 
-<script type="text/javascript" src="<% request.uri_base %>/javascripts/search.js"></script>
+<script type="text/javascript">
+    var where_url  = '<% request.uri_base %>/where';
+    var search_url = '<% request.uri_base %>/search';
+    var twitter_spec = '<% request.uri_base %>/spec/twitter';
+</script>
+
+<script type="text/javascript" src="<% request.uri_base %>/javascripts/jquery-spore/spore.js"></script>
+<script type="text/javascript" src="<% request.uri_base %>/javascripts/qboedg.js"></script>
 
 <script type="text/javascript"
     src="http://maps.googleapis.com/maps/api/js?sensor=false">
 </script>
 
-<script type="text/javascript">
-  function initialize() {
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var myOptions = {
-      zoom: 10,
-      center: latlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
-        myOptions);
-  }
-
-</script>
-
 </head>
-<body>
+<body onload="get_location( where_url, 'Paris, France', move );">
 <% content %>
 <div id="footer">
 Powered by <a href="http://perldancer.org/">Dancer</a> <% dancer_version %>

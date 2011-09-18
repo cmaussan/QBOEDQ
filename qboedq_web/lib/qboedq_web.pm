@@ -1,6 +1,7 @@
 package qboedq_web;
 use Dancer ':syntax';
 
+use CHI;
 use Net::HTTP::Spore;
 use Try::Tiny;
 use YAML::XS;
@@ -29,10 +30,51 @@ get '/search' => sub {
     my $data = { query => $query };
 
     if( $res ) {
-        $data->{ github } = $res->body->{ users };
+        $data->{ users } = $res->body->{ users };
     } 
 
     return to_json( $data );
+};
+
+get '/where' => sub {
+    my $location = params->{ location };
+    debug "query: $location";
+
+    my $cache = CHI->new( driver => 'File', root_dir => '/tmp/qboedq' );
+    my $data = $cache->get( $location );
+    unless( defined $data ) {
+
+        my $client = _client( 'googlemaps' );
+
+        my $res;
+        try {
+            $res = $client->geocode( 
+                format => 'json', 
+                address => $location,  
+                sensor => 'false',
+            );
+            debug Dump $res;
+        }
+        catch {
+            error Dump $_;
+        };    
+        
+        $data = $res->body->{ results }->[0]->{ geometry }->{ location };
+        $cache->set( $location, $data, "24h" );
+    }
+
+    return to_json( $data );
+};
+
+
+get '/spec/:service' => sub {
+    my $service = params->{ service };
+    if( defined config->{ spore }->{ $service } ) {
+        return send_file( config->{ spore }->{ $service }->{ spec }, system_path => 1 );
+    }
+    else {
+        return to_json( {} );
+    }
 };
 
 sub _client {

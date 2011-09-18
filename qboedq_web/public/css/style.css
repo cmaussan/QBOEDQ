@@ -19,7 +19,14 @@ body {
     width: 200px;
     bottom: 15px;
     background-color: #ddd;    
+    font-size: 9pt;
 }
+
+#result > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}   
 
 #map_canvas  {
     position: absolute;
