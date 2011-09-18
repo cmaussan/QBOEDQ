@@ -1,0 +1,9 @@
+<div id="search_form">
+    <input id="query_field" type="text" value="franckcuny">
+    <input type="button" value="go!" onclick="search( '<% request.uri_base %>/search', $( '#query_field' ).val() )"> 
+</div>
+<div id="result">
+</div>
+<div id="map_canvas">
+</div>
+
