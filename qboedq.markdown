@@ -197,8 +197,8 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
 
  * Client complet (en prod)
 
- * Développé chez Linkfluence par Niko.
- * jquery-spore est dispo sur [GitHub](https://github.com/nikopol/jquery-spore)
+ * Développé chez Linkfluence par Nils Grünwald.
+ * jquery-spore est dispo sur [GitHub](https://github.com/ngrunwald/clj-spore)
 
 ---
 
