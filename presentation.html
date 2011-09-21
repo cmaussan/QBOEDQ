@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Exemple de mashup polyglotte avec SPORE</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="file:///home/cmaussan/.pythonbrew/pythons/Python-2.7.2/lib/python2.7/site-packages/landslide/themes/default/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="file:///home/cmaussan/.pythonbrew/pythons/Python-2.7.2/lib/python2.7/site-packages/landslide/themes/default/css/screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="file:///home/cmaussan/.pythonbrew/pythons/Python-2.7.2/lib/python2.7/site-packages/landslide/themes/default/js/slides.js"></script>
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Exemple de mashup polyglotte avec SPORE</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>SPORE</h1></header>
+            
+            
+            <section><h2>SPecifications for a POrtable Rest Environment</h2>
+<blockquote>
+<p>"SPORE is a specification for describing REST API that can be parsed and used automatically by clients implementations to communicate with the described API."</p>
+</blockquote>
+<ul>
+<li>Créé par Franck Cuny et Nils Grünwald au sein de Linkfluence.</li>
+<li>Première release il y a 1 an à l'OSDC.fr 2010 :)</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Pourquoi ?</h1></header>
+            
+            
+            <section><p>Chez Linkfluence, on développe des moteurs de captation/traitement de données issues du web social.</p>
+<ul>
+<li>Système distribué d'agents dans plusieurs langages</li>
+<li>Communications avec bases, outils externes, etc. en REST</li>
+<li>Write once, deploy everywhere </li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Une spec ?</h1></header>
+            
+            
+            <section><p><a href="https://dev.twitter.com/docs/api/1/get/search">https://dev.twitter.com/docs/api/1/get/search</a></p>
+<div class="highlight"><pre><span class="lineno"> 1</span> <span class="p">{</span>
+<span class="lineno"> 2</span>     <span class="s2">&quot;base_url&quot;</span> <span class="o">:</span> <span class="s2">&quot;http://search.twitter.com/&quot;</span><span class="p">,</span>
+<span class="lineno"> 3</span>     <span class="s2">&quot;methods&quot;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="s2">&quot;search&quot;</span> <span class="o">:</span> <span class="p">{</span>
+<span class="lineno"> 5</span>             <span class="s2">&quot;path&quot;</span> <span class="o">:</span> <span class="s2">&quot;/search.:format&quot;</span><span class="p">,</span>
+<span class="lineno"> 6</span>             <span class="s2">&quot;method&quot;</span> <span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+<span class="lineno"> 7</span>             <span class="s2">&quot;required_params&quot;</span> <span class="o">:</span> <span class="p">[</span>
+<span class="lineno"> 8</span>                 <span class="s2">&quot;format&quot;</span><span class="p">,</span>
+<span class="lineno"> 9</span>                 <span class="s2">&quot;q&quot;</span>
+<span class="lineno">10</span>             <span class="p">],</span>
+<span class="lineno">11</span>             <span class="s2">&quot;optional_params&quot;</span> <span class="o">:</span> <span class="p">[</span>
+<span class="lineno">12</span>                 <span class="s2">&quot;geocode&quot;</span><span class="p">,</span>
+<span class="lineno">13</span>                 <span class="s2">&quot;lang&quot;</span><span class="p">,</span>
+<span class="lineno">14</span>                 <span class="s2">&quot;locale&quot;</span><span class="p">,</span>
+<span class="lineno">15</span>                 <span class="s2">&quot;page&quot;</span><span class="p">,</span>
+<span class="lineno">16</span>                 <span class="s2">&quot;result_type&quot;</span>
+<span class="lineno">17</span>              <span class="p">]</span>
+<span class="lineno">18</span>         <span class="p">}</span>
+<span class="lineno">19</span>     <span class="p">}</span>
+<span class="lineno">20</span> <span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Middlewares</h1></header>
+            
+            
+            <section><ul>
+<li>Formats</li>
+<li>Authenfication</li>
+<li>Cache</li>
+<li>Gestion des headers</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Perl</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="lineno"> 1</span> <span class="k">use</span> <span class="nn">Net::HTTP::</span><span class="n">Spore</span><span class="p">;</span>
+<span class="lineno"> 2</span> <span class="k">use</span> <span class="nn">Try::</span><span class="n">Tiny</span><span class="p">;</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="k">my</span> <span class="nv">$client</span> <span class="o">=</span> <span class="nn">Net::HTTP::</span><span class="n">Spore</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span>
+<span class="lineno"> 5</span>     <span class="s">&#39;/path/to/spec.json&#39;</span><span class="p">,</span>
+<span class="lineno"> 6</span>     <span class="n">base_url</span> <span class="o">=&gt;</span> <span class="s">&#39;http://base_url/&#39;</span><span class="p">,</span> <span class="c1"># Optional</span>
+<span class="lineno"> 7</span> <span class="p">);</span>
+<span class="lineno"> 8</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="n">enable</span><span class="p">(</span> <span class="s">&#39;Format::JSON&#39;</span> <span class="p">);</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="k">my</span> <span class="nv">$res</span><span class="p">;</span>
+<span class="lineno">11</span> <span class="n">try</span> <span class="p">{</span>
+<span class="lineno">12</span>     <span class="nv">$res</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="n">search</span><span class="p">(</span> <span class="nb">format</span> <span class="o">=&gt;</span> <span class="s">&#39;json&#39;</span><span class="p">,</span> <span class="sx">q =&gt; </span><span class="s">&#39;osdc&#39;</span> <span class="p">);</span>
+<span class="lineno">13</span> <span class="p">}</span>
+<span class="lineno">14</span> <span class="n">catch</span> <span class="p">{</span>
+<span class="lineno">15</span>     <span class="nb">warn</span> <span class="nv">$_</span><span class="p">;</span>
+<span class="lineno">16</span> <span class="p">};</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="n">say</span> <span class="nv">$_</span><span class="o">-&gt;</span><span class="p">{</span> <span class="n">text</span> <span class="p">}</span> <span class="k">for</span><span class="p">(</span> <span class="nv">@</span><span class="p">{</span> <span class="nv">$res</span><span class="o">-&gt;</span><span class="n">body</span><span class="o">-&gt;</span><span class="p">{</span> <span class="n">results</span> <span class="p">}</span> <span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<ul>
+<li>
+<p>Client complet (en prod)</p>
+</li>
+<li>
+<p>Développé chez Linkfluence par Franck Cuny.</p>
+</li>
+<li>Net-HTTP-Spore est dispo sur <a href="https://metacpan.org/module/Net::HTTP::Spore">CPAN</a> et sur <a href="https://github.com/franckcuny/net-http-spore">GitHub</a>.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Lua</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="lineno"> 1</span> <span class="kd">local</span> <span class="n">Spore</span> <span class="o">=</span> <span class="nb">require</span> <span class="s1">&#39;</span><span class="s">Spore&#39;</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="kd">local</span> <span class="n">client</span> <span class="o">=</span> <span class="n">Spore</span><span class="p">.</span><span class="n">new_from_spec</span> <span class="s1">&#39;</span><span class="s">/path/to/spec.json&#39;</span>
+<span class="lineno"> 4</span> <span class="n">client</span><span class="p">:</span><span class="n">enable</span> <span class="s1">&#39;</span><span class="s">Format.JSON&#39;</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="kd">local</span> <span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="p">:</span><span class="n">search</span><span class="p">{</span> <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">json&#39;</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s">osdc&#39;</span> <span class="p">}</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="k">for</span> <span class="n">t</span> <span class="k">in</span> <span class="n">res</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">results</span> <span class="k">do</span>
+<span class="lineno"> 9</span>     <span class="nb">print</span><span class="p">(</span> <span class="n">t</span><span class="p">.</span><span class="n">text</span> <span class="p">)</span>
+<span class="lineno">10</span> <span class="k">end</span>
+</pre></div>
+
+<ul>
+<li>
+<p>Client complet (en prod ?)</p>
+</li>
+<li>
+<p>Développé par François Perrad.</p>
+</li>
+<li>lua-Spore est dispo sur <a href="http://luaforge.net/projects/lua-spore/files/">LuaForge</a> (luarocks) et sur <a href="http://github.com/fperrad/lua-Spore/downloads/">GitHub</a>.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Ruby</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="lineno"> 1</span> <span class="nb">require</span> <span class="s1">&#39;spore&#39;</span>
+<span class="lineno"> 2</span> <span class="nb">require</span> <span class="s1">&#39;spore/middleware/format&#39;</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="n">client</span> <span class="o">=</span> <span class="no">Spore</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+<span class="lineno"> 5</span>     <span class="s1">&#39;/path/to/spec.json&#39;</span><span class="p">,</span>
+<span class="lineno"> 6</span>     <span class="p">{</span> <span class="ss">:base_url</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://base_url/&#39;</span> <span class="p">}</span> 
+<span class="lineno"> 7</span> <span class="p">)</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="n">res</span> <span class="o">=</span> <span class="k">begin</span>
+<span class="lineno">10</span>     <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="ss">:format</span> <span class="o">=&gt;</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="ss">:q</span> <span class="o">=&gt;</span> <span class="s1">&#39;osdc&#39;</span> <span class="p">)</span>
+<span class="lineno">11</span> <span class="k">rescue</span>
+<span class="lineno">12</span>     <span class="k">raise</span> <span class="vg">$!</span>
+<span class="lineno">13</span> <span class="k">end</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="n">res</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+<span class="lineno">16</span>     <span class="nb">puts</span> <span class="n">t</span><span class="o">.</span><span class="n">text</span>
+<span class="lineno">17</span> <span class="k">end</span>
+</pre></div>
+
+<ul>
+<li>
+<p>Client complet (en prod)</p>
+</li>
+<li>
+<p>Développé chez Weborama par Sukria.</p>
+</li>
+<li>Ruby-Spore est dispo sur <a href="https://github.com/sukria/Ruby-Spore">GitHub</a>.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>nodejs</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="lineno"> 1</span> <span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">spore</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/path/to/spec.json&#39;</span> <span class="p">);</span>
+<span class="lineno"> 2</span> <span class="nx">client</span><span class="p">.</span><span class="nx">enable</span><span class="p">(</span> <span class="nx">require</span><span class="p">(</span> <span class="s1">&#39;spore&#39;</span> <span class="p">).</span><span class="nx">middlewares</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="p">);</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="nx">client</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span> <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="nx">q</span><span class="o">:</span> <span class="s1">&#39;osdc&#39;</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">res</span> <span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> 
+<span class="lineno"> 6</span>         <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+<span class="lineno"> 7</span>     <span class="k">for</span><span class="p">(</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">results</span> <span class="p">){</span>
+<span class="lineno"> 8</span>         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">results</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">text</span> <span class="p">);</span>
+<span class="lineno"> 9</span>     <span class="p">};</span>    
+<span class="lineno">10</span> <span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<ul>
+<li>
+<p>Client complet (en prod ?)</p>
+</li>
+<li>
+<p>Développé chez AF83 par François de Metz.</p>
+</li>
+<li>node-spore est dispo sur <a href="http://search.npmjs.org/#/spore">npm</a> et sur <a href="https://github.com/francois2metz/node-spore">GitHub</a>.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>JQuery</h1></header>
+            
+            
+            <section><div class="highlight"><pre><span class="lineno"> 1</span> <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;jquery-spore/spore.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="lineno"> 2</span> <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 3</span>     <span class="kd">var</span> <span class="nx">client</span>  <span class="o">=</span> <span class="nx">spore</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">twitter_spec</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span> <span class="nx">client</span><span class="o">=</span><span class="nx">a</span> <span class="p">});</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>     <span class="nx">client</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span>
+<span class="lineno"> 6</span>         <span class="p">{</span> <span class="s2">&quot;format&quot;</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="o">:</span> <span class="nx">query</span> <span class="p">},</span>
+<span class="lineno"> 7</span>         <span class="kd">function</span><span class="p">(</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">req</span> <span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8</span>             <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">d</span><span class="p">.</span><span class="nx">results</span> <span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>                 <span class="kd">var</span> <span class="nx">t</span> <span class="o">=</span> <span class="nx">d</span><span class="p">.</span><span class="nx">results</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="lineno">10</span>                 <span class="nx">$</span><span class="p">(</span> <span class="s1">&#39;&lt;li&gt;&#39;</span> <span class="p">)</span>
+<span class="lineno">11</span>                     <span class="p">.</span><span class="nx">text</span><span class="p">(</span> <span class="nx">t</span><span class="p">.</span><span class="nx">text</span> <span class="p">)</span>
+<span class="lineno">12</span>                     <span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span> <span class="s1">&#39;#result &gt; ul&#39;</span> <span class="p">);</span>
+<span class="lineno">13</span>             <span class="p">}</span>
+<span class="lineno">14</span>     <span class="p">},</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">req</span> <span class="p">)</span> <span class="p">{</span>
+<span class="lineno">15</span>         <span class="nx">alert</span><span class="p">(</span> <span class="nx">req</span> <span class="p">);</span>
+<span class="lineno">16</span>     <span class="p">}</span>
+<span class="lineno">17</span> <span class="p">);</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="nt">&lt;/script&gt;</span>
+</pre></div>
+
+<ul>
+<li>Fonctionne uniquement en JSONP</li>
+<li>
+<p>Pas de support des middlewares pour le moment</p>
+</li>
+<li>
+<p>Développé chez Linkfluence par Niko.</p>
+</li>
+<li>jquery-spore est dispo sur <a href="https://github.com/nikopol/jquery-spore">GitHub</a></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Clojure</h1></header>
+            
+            
+            <section><ul>
+<li>
+<p>Client complet (en prod)</p>
+</li>
+<li>
+<p>Développé chez Linkfluence par Niko.</p>
+</li>
+<li>jquery-spore est dispo sur <a href="https://github.com/nikopol/jquery-spore">GitHub</a></li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Java et autres langages sur JVM</h1></header>
+            
+            
+            <section><ul>
+<li>Client Clojure</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Autre langages</h1></header>
+            
+            
+            <section><ul>
+<li>Python (en cours par Franck Cuny)</li>
+<li>PHP (?)</li>
+<li>C++, Haskell, Go : à faire ;)</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              13/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Specs existantes</h1></header>
+            
+            
+            <section><h2>Services</h2>
+<p>Amazon S3 / Bitly (pr) / Facebook (Graph et REST) / GeoNames / GitHub / 
+GoogleOAuth / Google (Maps, PageSpeed, Shortener, Translate) / Gnip / 
+HackerNews / IndexTank / Intervals / LinkedIn / Ohloh / OpenCalais / 
+SoundCloud (pr) / Superfeedr / Syllabs (pr) / Topsy (pr) / Twitter / 
+TwitterSearch</p>
+<h2>Apps</h2>
+<p>CouchDB / Presque (système de message inspiré de resque) / Redmine</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Google APIs Discovery</h1></header>
+            
+            
+            <section><ul>
+<li>Souplesse vs. Complexité (https://www.googleapis.com/discovery/v1/apis/urlshortener/v1/rest)</li>
+<li>
+<p>Google APIs Discovery n'existe aujourd'hui que pour les APIs Google</p>
+</li>
+<li>
+<p>SPORE est compatible (on peut générer des specs Google APIs Discovery à partir de specs SPORE)</p>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Infos</h1></header>
+            
+            
+            <section><ul>
+<li>La plupart des projets (et les specs) sont sur GitHub donc "fork"</li>
+<li>Un GoogleGroup </li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: qboedq.markdown -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Remerciements</h1></header>
+            
+            
+            <section><ul>
+<li>Dancer - a micro web application framework for Perl - <a href="http://perldancer.org/">http://perldancer.org/</a></li>
+<li>François Perrad, Sukria et Weborama, François de Metz et AF83</li>
+<li>Tous ceux qui écrivent des specs :)</li>
+<li>Tous ceux qui utilise SPORE !</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="qboedq.markdown">qboedq.markdown</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/17
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">Exemple de mashup polyglotte avec SPORE</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">SPORE</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">Pourquoi ?</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">Une spec ?</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Middlewares</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Perl</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Lua</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">Ruby</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">nodejs</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">JQuery</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">Clojure</a></th>
+        <td><a href="#slide11">11</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-12">
+        <th><a href="#slide12">Java et autres langages sur JVM</a></th>
+        <td><a href="#slide12">12</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-13">
+        <th><a href="#slide13">Autre langages</a></th>
+        <td><a href="#slide13">13</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-14">
+        <th><a href="#slide14">Specs existantes</a></th>
+        <td><a href="#slide14">14</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-15">
+        <th><a href="#slide15">Google APIs Discovery</a></th>
+        <td><a href="#slide15">15</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Infos</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-17">
+        <th><a href="#slide17">Remerciements</a></th>
+        <td><a href="#slide17">17</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
