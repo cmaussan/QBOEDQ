@@ -501,16 +501,14 @@
             <header><h1>Clojure</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="lineno"> 1</span> <span class="p">(</span><span class="nb">import </span><span class="ss">&#39;clj-spore</span><span class="p">)</span>
-<span class="lineno"> 2</span> <span class="p">(</span><span class="nb">import </span><span class="ss">&#39;clj-spore</span><span class="o">.</span><span class="nv">middleware</span><span class="p">)</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="p">(</span><span class="k">def </span><span class="nv">client</span> <span class="p">(</span><span class="nf">load-spec-from-file</span> <span class="s">&quot;/path/to/spec.json&quot;</span>
-<span class="lineno"> 5</span>                              <span class="nv">:middlewares</span> <span class="p">[</span><span class="nv">wrap-json-format</span><span class="p">]</span>
-<span class="lineno"> 6</span>                              <span class="nv">:overload</span> <span class="p">{</span><span class="nv">:base_url</span> <span class="s">&quot;http://base_url/&quot;</span><span class="p">}))</span>
-<span class="lineno"> 7</span> <span class="p">(</span><span class="nf">try</span>
-<span class="lineno"> 8</span>     <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">res</span> <span class="p">((</span><span class="nf">client</span> <span class="nv">:search</span><span class="p">)</span> <span class="nv">:format</span> <span class="s">&quot;json&quot;</span> <span class="nv">:q</span> <span class="s">&quot;osdc&quot;</span><span class="p">)]</span>
-<span class="lineno"> 9</span>         <span class="p">(</span><span class="nb">doseq </span><span class="p">[</span><span class="nv">item</span> <span class="p">(</span><span class="nf">:decoded-body</span> <span class="nv">res</span><span class="p">)]</span> <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">item</span> <span class="nv">:text</span><span class="p">))))</span>
-<span class="lineno">10</span>     <span class="p">(</span><span class="nf">catch</span> <span class="nv">Exception</span> <span class="nv">e</span> <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="o">.</span><span class="nv">getMessage</span> <span class="nv">e</span><span class="p">))))</span>
+            <section><div class="highlight"><pre><span class="lineno">1</span> <span class="p">(</span><span class="nf">use</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">clj-spore</span><span class="p">)</span> <span class="o">&#39;</span><span class="p">(</span><span class="nv">clj-spore</span><span class="o">.</span><span class="nv">middleware</span><span class="p">))</span>
+<span class="lineno">2</span> <span class="p">(</span><span class="k">def </span><span class="nv">client</span> <span class="p">(</span><span class="nf">load-spec-from-file</span> <span class="s">&quot;/path/to/spec.json&quot;</span>
+<span class="lineno">3</span>                              <span class="nv">:middlewares</span> <span class="p">[</span><span class="nv">wrap-json-format</span><span class="p">]</span>
+<span class="lineno">4</span>                              <span class="nv">:overload</span> <span class="p">{</span><span class="nv">:base_url</span> <span class="s">&quot;http://base_url/&quot;</span><span class="p">}))</span>
+<span class="lineno">5</span> <span class="p">(</span><span class="nf">try</span>
+<span class="lineno">6</span>     <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">res</span> <span class="p">((</span><span class="nf">client</span> <span class="nv">:search</span><span class="p">)</span> <span class="nv">:format</span> <span class="s">&quot;json&quot;</span> <span class="nv">:q</span> <span class="s">&quot;osdc&quot;</span><span class="p">)]</span>
+<span class="lineno">7</span>         <span class="p">(</span><span class="nb">doseq </span><span class="p">[</span><span class="nv">item</span> <span class="p">(</span><span class="nf">:decoded-body</span> <span class="nv">res</span><span class="p">)]</span> <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">item</span> <span class="nv">:text</span><span class="p">))))</span>
+<span class="lineno">8</span>     <span class="p">(</span><span class="nf">catch</span> <span class="nv">Exception</span> <span class="nv">e</span> <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="o">.</span><span class="nv">getMessage</span> <span class="nv">e</span><span class="p">))))</span>
 </pre></div>
 
 <ul>
