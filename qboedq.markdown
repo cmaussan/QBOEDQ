@@ -54,6 +54,8 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
 
 # Middlewares
 
+
+
  * Formats
  * Authenfication
  * Cache
@@ -83,8 +85,7 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
 
     say $_->{ text } for( @{ $res->body->{ results } } );
 
- * Client complet (en prod)
-
+ * Client complet (en prod).
  * Développé chez Linkfluence par Franck Cuny.
  * Net-HTTP-Spore est dispo sur [CPAN](https://metacpan.org/module/Net::HTTP::Spore) et sur [GitHub](https://github.com/franckcuny/net-http-spore).
 
@@ -104,8 +105,7 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
         print( t.text )
     end
 
- * Client complet (en prod ?)
-
+ * Client complet (en prod ?).
  * Développé par François Perrad.
  * lua-Spore est dispo sur [LuaForge](http://luaforge.net/projects/lua-spore/files/) (luarocks) et sur [GitHub](http://github.com/fperrad/lua-Spore/downloads/).
 
@@ -121,6 +121,7 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
         '/path/to/spec.json',
         { :base_url => 'http://base_url/' } 
     )
+    client.enable(Spore::Middleware::Format)
 
     res = begin
         client.search( :format => 'json', :q => 'osdc' )
@@ -132,8 +133,7 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
         puts t.text
     end
 
- * Client complet (en prod)
-
+ * Client complet (en prod).
  * Développé chez Weborama par Sukria.
  * Ruby-Spore est dispo sur [GitHub](https://github.com/sukria/Ruby-Spore).
 
@@ -142,8 +142,9 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
 # nodejs
 
     !javascript
+    var spore = require( 'spore' );
     var client = spore.createClient( __dirname + '/path/to/spec.json' );
-    client.enable( require( 'spore' ).middlewares.json() ); 
+    client.enable( spore.middlewares.json() ); 
 
     client.search( { format: 'json', q: 'osdc' }, function( err, res ) {
         if ( err ) 
@@ -153,8 +154,7 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
         };    
     } );
 
- * Client complet (en prod ?)
-
+ * Client complet (en prod ?).
  * Développé chez AF83 par François de Metz.
  * node-spore est dispo sur [npm](http://search.npmjs.org/#/spore) et sur [GitHub](https://github.com/francois2metz/node-spore).
 
@@ -176,41 +176,51 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
                         .text( t.text )
                         .appendTo( '#result > ul' );
                 }
-	    }, function( req ) {
-		    alert( req );
-	    }
-    );
+	        }, 
+            function( req ) {
+		        alert( req );
+	        }
+        );
 
     </script>
 
  * Fonctionne uniquement en JSONP
  * Pas de support des middlewares pour le moment
-
  * Développé chez Linkfluence par Niko.
  * jquery-spore est dispo sur [GitHub](https://github.com/nikopol/jquery-spore)
-
-
 
 ---
 
 # Clojure
 
+    !clojure
+    (import 'clj-spore)
+    (import 'clj-spore.middleware)
+
+    (def client (load-spec-from-file "/path/to/spec.json"
+                                 :middlewares [wrap-json-format]
+                                 :overload {:base_url "http://base_url/"}))
+    (try
+        (let [res ((client :search) :format "json" :q "osdc")]
+            (doseq [item (:decoded-body res)] (println (item :text))))
+        (catch Exception e (println (.getMessage e))))
+
  * Client complet (en prod)
-
  * Développé chez Linkfluence par Nils Grünwald.
- * jquery-spore est dispo sur [GitHub](https://github.com/ngrunwald/clj-spore)
-
----
-
-# Java et autres langages sur JVM
-
-  * Client Clojure
+ * clj-spore est dispo sur [GitHub](https://github.com/ngrunwald/clj-spore)
 
 ---
 
 # Autre langages
-  
-  * Python (en cours par Franck Cuny)
+
+## Java et autres langages sur JVM 
+  * Client Clojure (pour le moment)
+  * Un vrai client Java en cours par Nils Grünwald
+
+## Python  
+  * Client en cours par Franck Cuny
+
+## Autres 
   * PHP (?)
   * C++, Haskell, Go : à faire ;)
 
@@ -234,7 +244,11 @@ CouchDB / Presque (système de message inspiré de resque) / Redmine
 
 # Google APIs Discovery
 
-  * Souplesse vs. Complexité (https://www.googleapis.com/discovery/v1/apis/urlshortener/v1/rest)
+  * Specs plus simples :
+    * [Google APIs Discovery](https://www.googleapis.com/discovery/v1/apis/urlshortener/v1/rest)
+    * [SPORE](https://github.com/SPORE/api-description/blob/master/services/googleshortener.json)
+  * Souplesse : pas de compilation    
+
   * Google APIs Discovery n'existe aujourd'hui que pour les APIs Google
 
   * SPORE est compatible (on peut générer des specs Google APIs Discovery à partir de specs SPORE)
@@ -243,8 +257,11 @@ CouchDB / Presque (système de message inspiré de resque) / Redmine
 
 # Infos
 
-  * La plupart des projets (et les specs) sont sur GitHub donc "fork"
-  * Un GoogleGroup 
+  * Les specs et les descriptions d'API sont sur GitHub ([https://github.com/SPORE](https://github.com/SPORE))
+  * Tous les projets aussi
+  * Donc **"fork"** puis **"pull request"** :)
+
+  * Un GoogleGroup : [https://groups.google.com/group/spore-rest](https://groups.google.com/group/spore-rest)
 
 ---
 
@@ -253,6 +270,11 @@ CouchDB / Presque (système de message inspiré de resque) / Redmine
   * Dancer - a micro web application framework for Perl - [http://perldancer.org/](http://perldancer.org/)
   * François Perrad, Sukria et Weborama, François de Metz et AF83
   * Tous ceux qui écrivent des specs :)
-  * Tous ceux qui utilise SPORE !
+  * Tous ceux qui utilisent SPORE !
   
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+![Linkfluence](logo.png) 
 

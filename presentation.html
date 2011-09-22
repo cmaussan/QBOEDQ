@@ -70,7 +70,7 @@
             </aside>
             
             <aside class="page_number">
-              1/17
+              1/16
             </aside>
           </footer>
         </div>
@@ -107,7 +107,7 @@
             </aside>
             
             <aside class="page_number">
-              2/17
+              2/16
             </aside>
           </footer>
         </div>
@@ -142,7 +142,7 @@
             </aside>
             
             <aside class="page_number">
-              3/17
+              3/16
             </aside>
           </footer>
         </div>
@@ -194,7 +194,7 @@
             </aside>
             
             <aside class="page_number">
-              4/17
+              4/16
             </aside>
           </footer>
         </div>
@@ -229,7 +229,7 @@
             </aside>
             
             <aside class="page_number">
-              5/17
+              5/16
             </aside>
           </footer>
         </div>
@@ -264,12 +264,8 @@
 </pre></div>
 
 <ul>
-<li>
-<p>Client complet (en prod)</p>
-</li>
-<li>
-<p>Développé chez Linkfluence par Franck Cuny.</p>
-</li>
+<li>Client complet (en prod).</li>
+<li>Développé chez Linkfluence par Franck Cuny.</li>
 <li>Net-HTTP-Spore est dispo sur <a href="https://metacpan.org/module/Net::HTTP::Spore">CPAN</a> et sur <a href="https://github.com/franckcuny/net-http-spore">GitHub</a>.</li>
 </ul></section>
             
@@ -287,7 +283,7 @@
             </aside>
             
             <aside class="page_number">
-              6/17
+              6/16
             </aside>
           </footer>
         </div>
@@ -314,12 +310,8 @@
 </pre></div>
 
 <ul>
-<li>
-<p>Client complet (en prod ?)</p>
-</li>
-<li>
-<p>Développé par François Perrad.</p>
-</li>
+<li>Client complet (en prod ?).</li>
+<li>Développé par François Perrad.</li>
 <li>lua-Spore est dispo sur <a href="http://luaforge.net/projects/lua-spore/files/">LuaForge</a> (luarocks) et sur <a href="http://github.com/fperrad/lua-Spore/downloads/">GitHub</a>.</li>
 </ul></section>
             
@@ -337,7 +329,7 @@
             </aside>
             
             <aside class="page_number">
-              7/17
+              7/16
             </aside>
           </footer>
         </div>
@@ -358,25 +350,22 @@
 <span class="lineno"> 5</span>     <span class="s1">&#39;/path/to/spec.json&#39;</span><span class="p">,</span>
 <span class="lineno"> 6</span>     <span class="p">{</span> <span class="ss">:base_url</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://base_url/&#39;</span> <span class="p">}</span> 
 <span class="lineno"> 7</span> <span class="p">)</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span> <span class="n">res</span> <span class="o">=</span> <span class="k">begin</span>
-<span class="lineno">10</span>     <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="ss">:format</span> <span class="o">=&gt;</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="ss">:q</span> <span class="o">=&gt;</span> <span class="s1">&#39;osdc&#39;</span> <span class="p">)</span>
-<span class="lineno">11</span> <span class="k">rescue</span>
-<span class="lineno">12</span>     <span class="k">raise</span> <span class="vg">$!</span>
-<span class="lineno">13</span> <span class="k">end</span>
-<span class="lineno">14</span> 
-<span class="lineno">15</span> <span class="n">res</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-<span class="lineno">16</span>     <span class="nb">puts</span> <span class="n">t</span><span class="o">.</span><span class="n">text</span>
-<span class="lineno">17</span> <span class="k">end</span>
+<span class="lineno"> 8</span> <span class="n">client</span><span class="o">.</span><span class="n">enable</span><span class="p">(</span><span class="no">Spore</span><span class="o">::</span><span class="no">Middleware</span><span class="o">::</span><span class="no">Format</span><span class="p">)</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="n">res</span> <span class="o">=</span> <span class="k">begin</span>
+<span class="lineno">11</span>     <span class="n">client</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="ss">:format</span> <span class="o">=&gt;</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="ss">:q</span> <span class="o">=&gt;</span> <span class="s1">&#39;osdc&#39;</span> <span class="p">)</span>
+<span class="lineno">12</span> <span class="k">rescue</span>
+<span class="lineno">13</span>     <span class="k">raise</span> <span class="vg">$!</span>
+<span class="lineno">14</span> <span class="k">end</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="n">res</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+<span class="lineno">17</span>     <span class="nb">puts</span> <span class="n">t</span><span class="o">.</span><span class="n">text</span>
+<span class="lineno">18</span> <span class="k">end</span>
 </pre></div>
 
 <ul>
-<li>
-<p>Client complet (en prod)</p>
-</li>
-<li>
-<p>Développé chez Weborama par Sukria.</p>
-</li>
+<li>Client complet (en prod).</li>
+<li>Développé chez Weborama par Sukria.</li>
 <li>Ruby-Spore est dispo sur <a href="https://github.com/sukria/Ruby-Spore">GitHub</a>.</li>
 </ul></section>
             
@@ -394,7 +383,7 @@
             </aside>
             
             <aside class="page_number">
-              8/17
+              8/16
             </aside>
           </footer>
         </div>
@@ -408,25 +397,22 @@
             <header><h1>nodejs</h1></header>
             
             
-            <section><div class="highlight"><pre><span class="lineno"> 1</span> <span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">spore</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/path/to/spec.json&#39;</span> <span class="p">);</span>
-<span class="lineno"> 2</span> <span class="nx">client</span><span class="p">.</span><span class="nx">enable</span><span class="p">(</span> <span class="nx">require</span><span class="p">(</span> <span class="s1">&#39;spore&#39;</span> <span class="p">).</span><span class="nx">middlewares</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="p">);</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="nx">client</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span> <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="nx">q</span><span class="o">:</span> <span class="s1">&#39;osdc&#39;</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">res</span> <span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 5</span>     <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> 
-<span class="lineno"> 6</span>         <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
-<span class="lineno"> 7</span>     <span class="k">for</span><span class="p">(</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">results</span> <span class="p">){</span>
-<span class="lineno"> 8</span>         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">results</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">text</span> <span class="p">);</span>
-<span class="lineno"> 9</span>     <span class="p">};</span>    
-<span class="lineno">10</span> <span class="p">}</span> <span class="p">);</span>
+            <section><div class="highlight"><pre><span class="lineno"> 1</span> <span class="kd">var</span> <span class="nx">spore</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span> <span class="s1">&#39;spore&#39;</span> <span class="p">);</span>
+<span class="lineno"> 2</span> <span class="kd">var</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">spore</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/path/to/spec.json&#39;</span> <span class="p">);</span>
+<span class="lineno"> 3</span> <span class="nx">client</span><span class="p">.</span><span class="nx">enable</span><span class="p">(</span> <span class="nx">spore</span><span class="p">.</span><span class="nx">middlewares</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span> <span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nx">client</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span> <span class="p">{</span> <span class="nx">format</span><span class="o">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="nx">q</span><span class="o">:</span> <span class="s1">&#39;osdc&#39;</span> <span class="p">},</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">res</span> <span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> 
+<span class="lineno"> 7</span>         <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+<span class="lineno"> 8</span>     <span class="k">for</span><span class="p">(</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">results</span> <span class="p">){</span>
+<span class="lineno"> 9</span>         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">res</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">results</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">text</span> <span class="p">);</span>
+<span class="lineno">10</span>     <span class="p">};</span>    
+<span class="lineno">11</span> <span class="p">}</span> <span class="p">);</span>
 </pre></div>
 
 <ul>
-<li>
-<p>Client complet (en prod ?)</p>
-</li>
-<li>
-<p>Développé chez AF83 par François de Metz.</p>
-</li>
+<li>Client complet (en prod ?).</li>
+<li>Développé chez AF83 par François de Metz.</li>
 <li>node-spore est dispo sur <a href="http://search.npmjs.org/#/spore">npm</a> et sur <a href="https://github.com/francois2metz/node-spore">GitHub</a>.</li>
 </ul></section>
             
@@ -444,7 +430,7 @@
             </aside>
             
             <aside class="page_number">
-              9/17
+              9/16
             </aside>
           </footer>
         </div>
@@ -471,22 +457,19 @@
 <span class="lineno">11</span>                     <span class="p">.</span><span class="nx">text</span><span class="p">(</span> <span class="nx">t</span><span class="p">.</span><span class="nx">text</span> <span class="p">)</span>
 <span class="lineno">12</span>                     <span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span> <span class="s1">&#39;#result &gt; ul&#39;</span> <span class="p">);</span>
 <span class="lineno">13</span>             <span class="p">}</span>
-<span class="lineno">14</span>     <span class="p">},</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">req</span> <span class="p">)</span> <span class="p">{</span>
-<span class="lineno">15</span>         <span class="nx">alert</span><span class="p">(</span> <span class="nx">req</span> <span class="p">);</span>
-<span class="lineno">16</span>     <span class="p">}</span>
-<span class="lineno">17</span> <span class="p">);</span>
-<span class="lineno">18</span> 
-<span class="lineno">19</span> <span class="nt">&lt;/script&gt;</span>
+<span class="lineno">14</span>         <span class="p">},</span> 
+<span class="lineno">15</span>         <span class="kd">function</span><span class="p">(</span> <span class="nx">req</span> <span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>             <span class="nx">alert</span><span class="p">(</span> <span class="nx">req</span> <span class="p">);</span>
+<span class="lineno">17</span>         <span class="p">}</span>
+<span class="lineno">18</span>     <span class="p">);</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="nt">&lt;/script&gt;</span>
 </pre></div>
 
 <ul>
 <li>Fonctionne uniquement en JSONP</li>
-<li>
-<p>Pas de support des middlewares pour le moment</p>
-</li>
-<li>
-<p>Développé chez Linkfluence par Niko.</p>
-</li>
+<li>Pas de support des middlewares pour le moment</li>
+<li>Développé chez Linkfluence par Niko.</li>
 <li>jquery-spore est dispo sur <a href="https://github.com/nikopol/jquery-spore">GitHub</a></li>
 </ul></section>
             
@@ -504,7 +487,7 @@
             </aside>
             
             <aside class="page_number">
-              10/17
+              10/16
             </aside>
           </footer>
         </div>
@@ -512,20 +495,28 @@
       
       <!-- slide source: qboedq.markdown -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Clojure</h1></header>
             
             
-            <section><ul>
-<li>
-<p>Client complet (en prod)</p>
-</li>
-<li>
-<p>Développé chez Linkfluence par Niko.</p>
-</li>
-<li>jquery-spore est dispo sur <a href="https://github.com/nikopol/jquery-spore">GitHub</a></li>
+            <section><div class="highlight"><pre><span class="lineno"> 1</span> <span class="p">(</span><span class="nb">import </span><span class="ss">&#39;clj-spore</span><span class="p">)</span>
+<span class="lineno"> 2</span> <span class="p">(</span><span class="nb">import </span><span class="ss">&#39;clj-spore</span><span class="o">.</span><span class="nv">middleware</span><span class="p">)</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="p">(</span><span class="k">def </span><span class="nv">client</span> <span class="p">(</span><span class="nf">load-spec-from-file</span> <span class="s">&quot;/path/to/spec.json&quot;</span>
+<span class="lineno"> 5</span>                              <span class="nv">:middlewares</span> <span class="p">[</span><span class="nv">wrap-json-format</span><span class="p">]</span>
+<span class="lineno"> 6</span>                              <span class="nv">:overload</span> <span class="p">{</span><span class="nv">:base_url</span> <span class="s">&quot;http://base_url/&quot;</span><span class="p">}))</span>
+<span class="lineno"> 7</span> <span class="p">(</span><span class="nf">try</span>
+<span class="lineno"> 8</span>     <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">res</span> <span class="p">((</span><span class="nf">client</span> <span class="nv">:search</span><span class="p">)</span> <span class="nv">:format</span> <span class="s">&quot;json&quot;</span> <span class="nv">:q</span> <span class="s">&quot;osdc&quot;</span><span class="p">)]</span>
+<span class="lineno"> 9</span>         <span class="p">(</span><span class="nb">doseq </span><span class="p">[</span><span class="nv">item</span> <span class="p">(</span><span class="nf">:decoded-body</span> <span class="nv">res</span><span class="p">)]</span> <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="nf">item</span> <span class="nv">:text</span><span class="p">))))</span>
+<span class="lineno">10</span>     <span class="p">(</span><span class="nf">catch</span> <span class="nv">Exception</span> <span class="nv">e</span> <span class="p">(</span><span class="nb">println </span><span class="p">(</span><span class="o">.</span><span class="nv">getMessage</span> <span class="nv">e</span><span class="p">))))</span>
+</pre></div>
+
+<ul>
+<li>Client complet (en prod)</li>
+<li>Développé chez Linkfluence par Nils Grünwald.</li>
+<li>clj-spore est dispo sur <a href="https://github.com/ngrunwald/clj-spore">GitHub</a></li>
 </ul></section>
             
           </div>
@@ -542,39 +533,7 @@
             </aside>
             
             <aside class="page_number">
-              11/17
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: qboedq.markdown -->
-      <div class="slide-wrapper">
-        <div class="slide">
-          <div class="inner">
-            
-            <header><h1>Java et autres langages sur JVM</h1></header>
-            
-            
-            <section><ul>
-<li>Client Clojure</li>
-</ul></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="qboedq.markdown">qboedq.markdown</a>
-            </aside>
-            
-            <aside class="page_number">
-              12/17
+              11/16
             </aside>
           </footer>
         </div>
@@ -588,8 +547,17 @@
             <header><h1>Autre langages</h1></header>
             
             
-            <section><ul>
-<li>Python (en cours par Franck Cuny)</li>
+            <section><h2>Java et autres langages sur JVM</h2>
+<ul>
+<li>Client Clojure (pour le moment)</li>
+<li>Un vrai client Java en cours par Nils Grünwald</li>
+</ul>
+<h2>Python</h2>
+<ul>
+<li>Client en cours par Franck Cuny</li>
+</ul>
+<h2>Autres</h2>
+<ul>
 <li>PHP (?)</li>
 <li>C++, Haskell, Go : à faire ;)</li>
 </ul></section>
@@ -608,7 +576,7 @@
             </aside>
             
             <aside class="page_number">
-              13/17
+              12/16
             </aside>
           </footer>
         </div>
@@ -645,7 +613,7 @@ TwitterSearch</p>
             </aside>
             
             <aside class="page_number">
-              14/17
+              13/16
             </aside>
           </footer>
         </div>
@@ -660,7 +628,15 @@ TwitterSearch</p>
             
             
             <section><ul>
-<li>Souplesse vs. Complexité (https://www.googleapis.com/discovery/v1/apis/urlshortener/v1/rest)</li>
+<li>Specs plus simples :<ul>
+<li><a href="https://www.googleapis.com/discovery/v1/apis/urlshortener/v1/rest">Google APIs Discovery</a></li>
+<li><a href="https://github.com/SPORE/api-description/blob/master/services/googleshortener.json">SPORE</a></li>
+</ul>
+</li>
+<li>
+<p>Souplesse : pas de compilation  <br />
+</p>
+</li>
 <li>
 <p>Google APIs Discovery n'existe aujourd'hui que pour les APIs Google</p>
 </li>
@@ -683,7 +659,7 @@ TwitterSearch</p>
             </aside>
             
             <aside class="page_number">
-              15/17
+              14/16
             </aside>
           </footer>
         </div>
@@ -698,8 +674,14 @@ TwitterSearch</p>
             
             
             <section><ul>
-<li>La plupart des projets (et les specs) sont sur GitHub donc "fork"</li>
-<li>Un GoogleGroup </li>
+<li>Les specs et les descriptions d'API sont sur GitHub (<a href="https://github.com/SPORE">https://github.com/SPORE</a>)</li>
+<li>Tous les projets aussi</li>
+<li>
+<p>Donc <strong>"fork"</strong> puis <strong>"pull request"</strong> :)</p>
+</li>
+<li>
+<p>Un GoogleGroup : <a href="https://groups.google.com/group/spore-rest">https://groups.google.com/group/spore-rest</a></p>
+</li>
 </ul></section>
             
           </div>
@@ -716,7 +698,7 @@ TwitterSearch</p>
             </aside>
             
             <aside class="page_number">
-              16/17
+              15/16
             </aside>
           </footer>
         </div>
@@ -734,8 +716,13 @@ TwitterSearch</p>
 <li>Dancer - a micro web application framework for Perl - <a href="http://perldancer.org/">http://perldancer.org/</a></li>
 <li>François Perrad, Sukria et Weborama, François de Metz et AF83</li>
 <li>Tous ceux qui écrivent des specs :)</li>
-<li>Tous ceux qui utilise SPORE !</li>
-</ul></section>
+<li>Tous ceux qui utilisent SPORE !</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p><img alt="Linkfluence" src="file:///home/cmaussan/code/cmaussan/QBOEDQ/logo.png" /> </p></section>
             
           </div>
           <div class="presenter_notes">
@@ -751,7 +738,7 @@ TwitterSearch</p>
             </aside>
             
             <aside class="page_number">
-              17/17
+              16/16
             </aside>
           </footer>
         </div>
@@ -832,38 +819,32 @@ TwitterSearch</p>
       
       
       <tr id="toc-row-12">
-        <th><a href="#slide12">Java et autres langages sur JVM</a></th>
+        <th><a href="#slide12">Autre langages</a></th>
         <td><a href="#slide12">12</a></td>
       </tr>
       
       
       <tr id="toc-row-13">
-        <th><a href="#slide13">Autre langages</a></th>
+        <th><a href="#slide13">Specs existantes</a></th>
         <td><a href="#slide13">13</a></td>
       </tr>
       
       
       <tr id="toc-row-14">
-        <th><a href="#slide14">Specs existantes</a></th>
+        <th><a href="#slide14">Google APIs Discovery</a></th>
         <td><a href="#slide14">14</a></td>
       </tr>
       
       
       <tr id="toc-row-15">
-        <th><a href="#slide15">Google APIs Discovery</a></th>
+        <th><a href="#slide15">Infos</a></th>
         <td><a href="#slide15">15</a></td>
       </tr>
       
       
       <tr id="toc-row-16">
-        <th><a href="#slide16">Infos</a></th>
+        <th><a href="#slide16">Remerciements</a></th>
         <td><a href="#slide16">16</a></td>
-      </tr>
-      
-      
-      <tr id="toc-row-17">
-        <th><a href="#slide17">Remerciements</a></th>
-        <td><a href="#slide17">17</a></td>
       </tr>
       
       
