@@ -194,9 +194,7 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
 # Clojure
 
     !clojure
-    (import 'clj-spore)
-    (import 'clj-spore.middleware)
-
+    (use '(clj-spore) '(clj-spore.middleware))
     (def client (load-spec-from-file "/path/to/spec.json"
                                  :middlewares [wrap-json-format]
                                  :overload {:base_url "http://base_url/"}))
