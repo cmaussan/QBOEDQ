@@ -45,7 +45,8 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
                     "locale",
                     "page",
                     "result_type"
-                 ]
+                 ],
+                 "expected_status":[200]
             }
         }
     }
@@ -181,7 +182,6 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
 		        alert( req );
 	        }
         );
-
     </script>
 
  * Fonctionne uniquement en JSONP
@@ -195,9 +195,11 @@ Chez Linkfluence, on développe des moteurs de captation/traitement de données 
 
     !clojure
     (use '(clj-spore) '(clj-spore.middleware))
+
     (def client (load-spec-from-file "/path/to/spec.json"
                                  :middlewares [wrap-json-format]
                                  :overload {:base_url "http://base_url/"}))
+
     (try
         (let [res ((client :search) :format "json" :q "osdc")]
             (doseq [item (:decoded-body res)] (println (item :text))))
